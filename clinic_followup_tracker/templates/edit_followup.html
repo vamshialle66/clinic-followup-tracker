@@ -1,0 +1,9 @@
+<h2>Edit Follow-up</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+
+<a href="/">Back</a>

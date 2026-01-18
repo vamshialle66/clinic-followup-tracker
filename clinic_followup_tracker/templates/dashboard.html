@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body style="font-family: Arial;">
+
+<h1><b>DASHBOARD</b></h1>
+
+<p>
+    <strong>Total:</strong> {{ total_count }} |
+    <strong>Pending:</strong> {{ pending_count }} |
+    <strong>Done:</strong> {{ done_count }}
+</p>
+
+<hr>
+
+<h3>Follow-ups</h3>
+
+{% for f in followups %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <p>
+            <strong>Patient:</strong> {{ f.patient_name }} <br>
+            <strong>Phone:</strong> {{ f.phone }} <br>
+            <strong>Status:</strong> {{ f.status }}
+        </p>
+
+        <p>
+            <a href="{% url 'edit_followup' f.id %}">Edit</a> |
+            <a href="{% url 'mark_done' f.id %}">Mark Done</a> |
+            <a href="{% url 'public_followup' f.public_token %}" target="_blank">Public</a>
+        </p>
+    </div>
+{% empty %}
+    <p>No follow-ups found</p>
+{% endfor %}
+<p><strong>Views:</strong> {{ f.view_count }}</p>
+
+</body>
+</html>
