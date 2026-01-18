@@ -76,6 +76,68 @@ The public page:
 This helps clinic staff track whether a patient has viewed the follow-up.
 
 ---
+## Setup and Run Instructions
+
+### 1. Clone the Repository
+git clone https://github.com/vamshialle66/clinic-followup-tracker.git
+cd clinic-followup-tracker
+
+
+### 2. Create and Activate Virtual Environment
+python -m venv venv
+
+
+**Activate the virtual environment:**
+
+- Windows:
+venv\Scripts\activate
+
+
+- Linux / macOS:
+source venv/bin/activate
+
+
+### 3. Install Dependencies
+pip install -r requirements.txt
+
+
+### 4. Configure MySQL Database
+Edit `config/settings.py` and update the database configuration:
+
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'clinic_tracker',
+'USER': 'root',
+'PASSWORD': 'your_password',
+'HOST': 'localhost',
+'PORT': '3306',
+}
+}
+
+
+Make sure MySQL server is running.
+
+### 5. Run Database Migrations
+python manage.py makemigrations
+python manage.py migrate
+
+### 6. Create Superuser
+python manage.py createsuperuser
+
+
+### 7. Start the Development Server
+python manage.py runserver
+
+
+### 8. Access the Application
+- Admin Panel: http://127.0.0.1:8000/admin/
+- Login Page: http://127.0.0.1:8000/accounts/login/
+- Dashboard: http://127.0.0.1:8000/
+
+
+
+
 
 ## CSV Import Feature
 The application supports bulk import of follow-ups using a CSV file.
